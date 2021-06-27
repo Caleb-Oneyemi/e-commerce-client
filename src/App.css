@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,40 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.auth-form {
+  background: url('sunset.jpeg') no-repeat center center fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+button {
+  max-width: 92.5%;
+  background: red;
+  color: white;
+  border: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  margin: 0 0.5em;
+  border-radius: 7px 7px 7px 7px;
+  cursor: pointer;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
