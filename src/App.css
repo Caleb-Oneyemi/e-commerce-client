@@ -38,37 +38,94 @@
 } */
 
 .auth-form {
-  background: url('sunset.jpeg') no-repeat center center fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-80%, -50%);
+	background: #fff;
+	display: flex;
 }
 
 .form {
-  display: flex;
+	/* display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw;
+  width: 100vw; */
 }
 
 button {
-  max-width: 92.5%;
-  background: red;
-  color: white;
-  border: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.5rem 1.2rem;
-  margin: 0 0.5em;
-  border-radius: 7px 7px 7px 7px;
-  cursor: pointer;
-  text-align: center;
+	max-width: 92.5%;
+	background: red;
+	color: white;
+	border: 0;
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 0.5rem 1.2rem;
+	margin: 0 0.5em;
+	border-radius: 7px 7px 7px 7px;
+	cursor: pointer;
+	text-align: center;
 }
 
 a {
-  text-decoration: none;
-  color: black;
+	text-decoration: none;
+	color: black;
+}
+.market {
+	/* flex-basis: 50%; */
+	width: 20%;
+	/* height:30%; */
+}
+.market img {
+	position: fixed;
+	/* left:0; */
+	width: 60%;
+	height: 100%;
+	-webkit-transition: opacity 1s ease-in-out;
+	-moz-transition: opacity 1s ease-in-out;
+	-o-transition: opacity 1s ease-in-out;
+	transition: opacity 1s ease-in-out;
+}
+
+/* .market img.top:hover {
+  opacity:0;
+} */
+
+@keyframes cf3FadeInOut {
+	0% {
+		opacity: 1;
+	}
+	45% {
+		opacity: 0.5;
+	}
+	55% {
+		opacity: 0.2;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.market img.top {
+	animation-name: cf3FadeInOut;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-duration: 5s;
+	animation-direction: alternate;
+}
+
+@media screen and (max-width: 767px) {
+	.auth-form {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: #fff;
+		display: flex;
+	}
+
+	.market {
+		display: none;
+	}
 }
