@@ -19,7 +19,7 @@ const Form = styled.form`
 	line-height: 1.5;
 	font-weight: 600;
 	margin: 0 auto;
-	max-width: 60%;
+	/* max-width: 60%; */
 	background-color: #fff;
 
 	.form-title {
@@ -38,7 +38,7 @@ const Form = styled.form`
 	}
 	p {
 		font-size: 1rem;
-		margin: 1em 2em;
+		margin: 0.5em 3em;
 	}
 	div {
 		margin: 0 2em;
@@ -97,8 +97,16 @@ const Form = styled.form`
 		}
 	}
 
+	.not {
+		/* margin-left: 22rem; */
+	}
+
 	@media screen and (max-width: 767px) {
-		max-width: 50%;
+		max-width: 90%;
+
+		p {
+			font-size: .9rem;
+		}
 	}
 `;
 

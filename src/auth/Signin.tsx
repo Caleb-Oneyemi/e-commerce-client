@@ -36,7 +36,7 @@ export default function Signin() {
 	};
 
 	return (
-		<div>
+		
 			<div className="auth-form">
 				<Form>
 					<p className="form-title">Account SignIn</p>
@@ -66,7 +66,7 @@ export default function Signin() {
 						/>
 					</div>
 
-					<p>
+					<p id="not">
 						Don't have an account? <Link to="/register">Register</Link>
 					</p>
 
@@ -77,6 +77,6 @@ export default function Signin() {
 					<img className="top" src={img1} alt="market" />
 				</div>
 			</div>
-		</div>
+		
 	);
 }
