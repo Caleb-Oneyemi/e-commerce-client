@@ -6,8 +6,19 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 2rem;
+
+li{
+  margin-left: 4rem;
+}
+li a{
+  font-size: 1.5rem;
+}
   a,
   button {
+    font-size: .5rem;
+    /* color:#1f2749; */
+    color: #fff;
+    text-decoration: none;
     padding: 1rem 3rem;
     display: flex;
     align-items: center;
@@ -19,8 +30,10 @@ const NavStyles = styled.ul`
     border: 0;
     cursor: pointer;
     @media (max-width: 700px) {
-      font-size: 10px;
+      font-size: 1rem;
       padding: 0 10px;
+
+      
     }
     &:before {
       content: '';
@@ -34,8 +47,8 @@ const NavStyles = styled.ul`
       bottom: 0;
     }
     &:after {
-      height: 2px;
-      background: red;
+      height: 3px;
+      background:blue;
       content: '';
       width: 0;
       position: absolute;
@@ -48,6 +61,7 @@ const NavStyles = styled.ul`
     &:hover,
     &:focus {
       outline: none;
+      /* border-bottom: 1px solid blue; */
       &:after {
         width: calc(100% - 60px);
       }
@@ -57,11 +71,22 @@ const NavStyles = styled.ul`
     }
   }
   @media (max-width: 1300px) {
-    border-top: 1px solid var(--lightGrey);
+    /* border-top: 1px solid var(--lightGrey); */
     width: 100%;
     justify-content: center;
     font-size: 1.5rem;
   }
+
+  @media (max-width: 1300px) {
+    li{
+      margin:0;
+      text-align: center;
+    }
+  li a{
+        font-size: 1rem;
+        margin: 1rem auto;
+      }
+    }
 `;
 
 export default NavStyles;

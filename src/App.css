@@ -41,18 +41,11 @@
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-80%, -50%);
-	background: #fff;
 	display: flex;
+	transform: translate(-80%, -50%);
+	/* background-color: rgb(237, 72, 81); */
 }
 
-.form {
-	/* display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw; */
-}
 
 button {
 	max-width: 92.5%;
@@ -73,9 +66,7 @@ a {
 	color: black;
 }
 .market {
-	/* flex-basis: 50%; */
-	width: 20%;
-	/* height:30%; */
+	width: 40%;
 }
 .market img {
 	position: fixed;
@@ -87,10 +78,6 @@ a {
 	-o-transition: opacity 1s ease-in-out;
 	transition: opacity 1s ease-in-out;
 }
-
-/* .market img.top:hover {
-  opacity:0;
-} */
 
 @keyframes cf3FadeInOut {
 	0% {

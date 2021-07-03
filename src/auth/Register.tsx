@@ -44,86 +44,84 @@ export default function Register() {
 	};
 
 	return (
-		<div>
-			<div className="auth-form">
-				<Form>
-					<p className="form-title">Create Account</p>
-					<div>
-						{/* <label htmlFor="firstName">First Name</label> */}
-						<input
-							name="firstName"
-							id="firstName"
-							value={values.firstName}
-							placeholder="First Name"
-							onChange={handleChange}
-							type="text"
-							required
-						/>
-					</div>
-
-					<div>
-						{/* <label htmlFor="lastName">Last Name</label> */}
-						<input
-							name="lastName"
-							id="lastName"
-							value={values.lastName}
-							placeholder="Last Name"
-							onChange={handleChange}
-							type="text"
-							required
-						/>
-					</div>
-
-					<div>
-						{/* <label htmlFor="email">Email</label> */}
-						<input
-							name="email"
-							id="email"
-							value={values.email}
-							placeholder="Email"
-							onChange={handleChange}
-							type="text"
-							required
-						/>
-					</div>
-
-					<div>
-						{/* <label htmlFor="phoneNumber">Phone Number</label> */}
-						<input
-							name="phoneNumber"
-							id="phoneNumber"
-							value={values.phoneNumber}
-							placeholder="Phone Number"
-							onChange={handleChange}
-							type="text"
-							required
-						/>
-					</div>
-
-					<div>
-						{/* <label htmlFor="password">Password</label> */}
-						<input
-							name="password"
-							id="password"
-							value={values.password}
-							placeholder="Password"
-							onChange={handleChange}
-							type="password"
-							required
-						/>
-					</div>
-
-					<p>
-						Already have an account? <Link to="/signin">Sign in</Link>
-					</p>
-
-					<button onClick={handleSubmit}>Register</button>
-				</Form>
-
-				<div className="market">
-					<img src={img3} alt="market" />
-          <img className="top" src={img1} alt="market" />
+		<div className="auth-form">
+			<Form>
+				<p className="form-title">Create Account</p>
+				<div>
+					{/* <label htmlFor="firstName">First Name</label> */}
+					<input
+						name="firstName"
+						id="firstName"
+						value={values.firstName}
+						placeholder="First Name"
+						onChange={handleChange}
+						type="text"
+						required
+					/>
 				</div>
+
+				<div>
+					{/* <label htmlFor="lastName">Last Name</label> */}
+					<input
+						name="lastName"
+						id="lastName"
+						value={values.lastName}
+						placeholder="Last Name"
+						onChange={handleChange}
+						type="text"
+						required
+					/>
+				</div>
+
+				<div>
+					{/* <label htmlFor="email">Email</label> */}
+					<input
+						name="email"
+						id="email"
+						value={values.email}
+						placeholder="Email"
+						onChange={handleChange}
+						type="text"
+						required
+					/>
+				</div>
+
+				<div>
+					{/* <label htmlFor="phoneNumber">Phone Number</label> */}
+					<input
+						name="phoneNumber"
+						id="phoneNumber"
+						value={values.phoneNumber}
+						placeholder="Phone Number"
+						onChange={handleChange}
+						type="text"
+						required
+					/>
+				</div>
+
+				<div>
+					{/* <label htmlFor="password">Password</label> */}
+					<input
+						name="password"
+						id="password"
+						value={values.password}
+						placeholder="Password"
+						onChange={handleChange}
+						type="password"
+						required
+					/>
+				</div>
+
+				<p>
+					Already have an account? <Link to="/signin">Sign in</Link>
+				</p>
+
+				<button onClick={handleSubmit}>Register</button>
+			</Form>
+
+			<div className="market">
+				<img src={img3} alt="market" />
+				<img className="top" src={img1} alt="market" />
 			</div>
 		</div>
 	);
