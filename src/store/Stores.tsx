@@ -39,6 +39,11 @@ const StoreListStyle = styled.div`
 		color: red;
 		font-style: italic;
 	}
+
+  @media screen and (max-width: 767px) {
+  
+  	grid-template-columns: 1fr;
+  }
 `;
 
 export default function Stores() {
@@ -118,4 +123,13 @@ const StoresWrapper = styled.div`
 
 	.stores1 {
 	}
+
+  @media screen and (max-width: 767px) {
+  
+    #btn-stores button {
+		display:block;
+    width: 99%;
+		margin: .5rem auto;
+	}
+}
 `;
