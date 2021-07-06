@@ -23,6 +23,7 @@ import CustomerStore from './store/CustomerStore';
 import Customer from './customer/Customer';
 import TrackOrder from './order/TrackOrder';
 import Cart from './order/Cart';
+import ConfirmUser from './user/ConfirmUser';
 
 function App() {
   const isAuthenticated = auth();
@@ -54,7 +55,7 @@ function App() {
         <Route path="/user/profile" component={Profile} />
         <Route path="/user/edit" component={EditProfile} />
         <Route path="/user/editpass" component={ChangePassword} />
-        <Route path="/confirm/:id" component={ChangePassword} />
+        <Route path="/confirm/:id" component={ConfirmUser} />
 
         <Route path="/stores/new" component={CreateStore} />
         <Route path="/stores/all" component={Stores} />

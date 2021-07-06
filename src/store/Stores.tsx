@@ -57,10 +57,10 @@ export default function Stores() {
     getStores(signal)
       .then((data) => {
         if (data.error) {
-			Swal.fire('Error', data.error);
-			setTimeout(() => {
-				history.push('/signin')
-			}, 3000)
+          Swal.fire('Error', data.error);
+          setTimeout(() => {
+            history.push('/signin');
+          }, 3000);
         } else {
           setStores(data);
         }
