@@ -76,9 +76,16 @@ export default function EditProfile() {
 
     getMerchantDetails(signal)
       .then((data) => {
-        setUser(data);
+        if (data.error) {
+          Swal.fire('Error', data.error);
+          setTimeout(() => {
+            history.push('/signin');
+          }, 3000);
+        } else {
+          setUser(data);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => Swal.fire('Error', err.message));
   }, []);
 
   return (

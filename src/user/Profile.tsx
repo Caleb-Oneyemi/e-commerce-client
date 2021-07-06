@@ -4,48 +4,57 @@ import { getMerchantDetails, storeMerchantImageUrl } from './api-user';
 import Header from '../Header';
 import { uploadImage } from '../utils/uploadImage';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
+
 export default function Profile() {
-	const [user, setUser] = useState({
-		firstName: '',
-		lastName: '',
-		email: '',
-		phoneNumber: '',
-		image: '',
-	});
-	const [files, setFiles] = useState({});
-	const history = useHistory();
+  const [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    image: '',
+  });
+  const [files, setFiles] = useState({});
+  const history = useHistory();
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const files = e.target.files as any;
-		setFiles(files[0]);
-	};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files as any;
+    setFiles(files[0]);
+  };
 
-	const handleUpload = async (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		uploadImage(files, storeMerchantImageUrl, null);
-	};
+  const handleUpload = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    uploadImage(files, storeMerchantImageUrl, null);
+  };
 
-	useEffect(() => {
-		const abortController = new AbortController();
-		const signal = abortController.signal;
+  useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
-		getMerchantDetails(signal)
-			.then((data) => {
-				setUser(data);
-			})
-			.catch((err) => console.log(err));
+    getMerchantDetails(signal)
+      .then((data) => {
+        if (data.error) {
+          Swal.fire('Error', data.error);
+          setTimeout(() => {
+            history.push('/signin')
+          }, 3000)
+        } else {
+          setUser(data);
+        }
+      })
+      .catch((err) => Swal.fire('Error', err.message));
 
-		return function cleanup() {
-			abortController.abort();
-		};
-	}, []);
+    return function cleanup() {
+      abortController.abort();
+    };
+  }, []);
 
-	return (
-		<>
-			<Header />
-			<ProfileWrapper>
-				{/* <form> */}
-				{/* <div>
+  return (
+    <>
+      <Header />
+      <ProfileWrapper>
+        {/* <form> */}
+        {/* <div>
 						<label htmlFor="fileInput" className="form-label">
 							<i className="icon fa fa-plus"></i>
 							<button onClick={handleUpload} className="uploades">
@@ -60,51 +69,57 @@ export default function Profile() {
 							onChange={handleChange}
 						/>
 					</div> */}
-				{/* </form> */}
+        {/* </form> */}
 
-				<div className="profile-details">
-					<div className="profile-image">
-						<img src={user?.image} alt="" />
-					</div>
+        <div className="profile-details">
+          <div className="profile-image">
+            <img src={user?.image} alt="" />
+          </div>
 
-					<div className="forms">
-						<label htmlFor="fileInput" className="form-label">
-							<i className="icon fa fa-plus"></i>
-							<button onClick={handleUpload} className="uploades">
-								Upload Picture
-							</button>
-						</label>
-						<input
-							type="file"
-							name="file"
-							id="fileInput"
-							style={{ display: 'none' }}
-							onChange={handleChange}
-						/>
-					</div>
-					<p>
-						First Name: <b>{user?.firstName}</b>
-					</p>
-					<p>
-						Last Name: <b>{user?.lastName}</b>
-					</p>
-					<p>
-						Email: <b>{user?.email}</b>
-					</p>
-					<p>
-						Phone Number: <b>{user?.phoneNumber}</b>
-					</p>
+          <div className="forms">
+            <label htmlFor="fileInput" className="form-label">
+              <i className="icon fa fa-plus"></i>
+              <button onClick={handleUpload} className="uploades">
+                Upload Picture
+              </button>
+            </label>
+            <input
+              type="file"
+              name="file"
+              id="fileInput"
+              style={{ display: 'none' }}
+              onChange={handleChange}
+            />
+          </div>
+          <p>
+            First Name: <b>{user?.firstName}</b>
+          </p>
+          <p>
+            Last Name: <b>{user?.lastName}</b>
+          </p>
+          <p>
+            Email: <b>{user?.email}</b>
+          </p>
+          <p>
+            Phone Number: <b>{user?.phoneNumber}</b>
+          </p>
 
-					<button className="profile-btn edit" onClick={() => history.push('/user/edit')}>
-						Edit Profile
-					</button>
-					<button className="profile-btn profile" onClick={() => history.push('/user/editpass')}>
-						Change Password
-					</button>
-				</div>
-			</ProfileWrapper>
-		</>
-	);
+          <button
+            className="profile-btn edit"
+            onClick={() => history.push('/user/edit')}
+          >
+            Edit Profile
+          </button>
+          <button
+            className="profile-btn profile"
+            onClick={() => history.push('/user/editpass')}
+          >
+            Change Password
+          </button>
+        </div>
+      </ProfileWrapper>
+    </>
+  );
 }
 
 const ProfileWrapper = styled.div`

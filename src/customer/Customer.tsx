@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { createOrder } from '../order/api-order';
 import Swal from 'sweetalert2';
 import Form from '../styles/Form';
 import Header from '../Header';
 
 export default function Customer() {
+  const history = useHistory();
   const cart = JSON.parse(localStorage.getItem('maestroCart') as string);
 
   const [order, setOrder] = useState({
@@ -25,6 +27,7 @@ export default function Customer() {
   const handleCheckout = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const store = cart[0].store;
+
     const orders = cart.map((item: any) => {
       return { product: item.product, quantity: item.quantity };
     });
@@ -35,7 +38,7 @@ export default function Customer() {
       email: order.email,
       phoneNumber: order.phoneNumber,
       address: order.address,
-      merchantEmail: order.merchantEmail,
+      merchantEmail: cart[0].merchant,
     };
 
     const response = await createOrder(data, store);
@@ -47,6 +50,7 @@ export default function Customer() {
 
     Swal.fire('Success', 'Items Ordered Successfully');
     localStorage.removeItem('maestroCart');
+    history.push('/cart');
   };
 
   return (
@@ -85,7 +89,7 @@ export default function Customer() {
               name="phoneNumber"
               id="phoneNumber"
               value={order.phoneNumber}
-              placeholder="Phone Number"
+              placeholder="+234 Phone Number"
               onChange={handleChange}
               required
             />

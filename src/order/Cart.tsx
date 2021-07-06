@@ -1,10 +1,7 @@
-import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { createOrder } from '../order/api-order';
 import { IProduct } from '../product/api-product';
 import Swal from 'sweetalert2';
-import Form from '../styles/Form';
 import Header from '../Header';
 import img from '../sunset.jpeg';
 import CartStyles from '../styles/CartStyles';
@@ -26,7 +23,7 @@ const CartItemStyles = styled.li`
 export default function Customer() {
   const history = useHistory();
   const cart = JSON.parse(localStorage.getItem('maestroCart') as string);
-  
+
   const totalCost = cart?.reduce(
     (sum: number, item: any) => sum + item.price * item.quantity,
     0
@@ -49,7 +46,7 @@ export default function Customer() {
           Swal.fire('Product Deleted Successfully', '', 'success');
           setTimeout(() => {
             window.location.reload();
-          }, 2000)
+          }, 2000);
         }
       });
     } catch (err) {
@@ -89,7 +86,7 @@ export default function Customer() {
               <div style={{ paddingBottom: '2em' }}>
                 Your total bill is {totalCost} Naira
               </div>
-              <button onClick={() => history.push('/order')}>Buy</button>
+              <button onClick={() => history.push('/order/create')}>Buy</button>
             </div>
           </CartStyles>
           {/* <br /> */}

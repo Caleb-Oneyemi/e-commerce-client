@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { getOrderByTrackingId } from '../order/api-order';
 import Header from '../Header';
 import styled from 'styled-components';

@@ -54,6 +54,7 @@ function App() {
         <Route path="/user/profile" component={Profile} />
         <Route path="/user/edit" component={EditProfile} />
         <Route path="/user/editpass" component={ChangePassword} />
+        <Route path="/confirm/:id" component={ChangePassword} />
 
         <Route path="/stores/new" component={CreateStore} />
         <Route path="/stores/all" component={Stores} />

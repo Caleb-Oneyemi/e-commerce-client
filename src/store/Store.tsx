@@ -11,7 +11,7 @@ export default function Store() {
     name: '',
     bio: '',
     category: '',
-    image: ''
+    image: '',
   });
   const history = useHistory();
   const location = useLocation();
@@ -67,10 +67,17 @@ export default function Store() {
 
     getStoreById(id, signal)
       .then((data) => {
-        setStore(data);
+        if (data.error) {
+          Swal.fire('Error', data.error);
+          setTimeout(() => {
+            history.push('/signin');
+          }, 3000);
+        } else {
+          setStore(data);
+        }
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire('Error', err.message);
       });
   }, [id]);
 
@@ -79,7 +86,7 @@ export default function Store() {
       <Header />
       {store?.name ? (
         <div>
-          <img src={store?.image} alt='' height='200px' width='300px'/>
+          <img src={store?.image} alt="" height="200px" width="300px" />
           <div>
             <h1>{store?.name}</h1>
             <p>{store?.category}</p>

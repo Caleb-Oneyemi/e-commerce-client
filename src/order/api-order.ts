@@ -1,16 +1,30 @@
 import { getToken } from '../utils/getToken';
 
-interface IOrderItem {
+export interface IOrderItem {
+  _id?: string;
   product: string;
   quantity: number;
 }
 
-interface IOrder {
+export interface IOrderItemQuery {
+  _id?: string;
+  product: { _id: string; name: string; price: number };
+  quantity: number;
+}
+
+export interface IOrderData {
+  status: string;
+}
+
+export interface IOrder {
+  _id?: string;
   name: string;
   email: string;
   phoneNumber: string;
   address: string;
+  status?: string;
   merchantEmail: string;
+  createdAt?: string;
   orderItems: IOrderItem[];
 }
 
@@ -86,7 +100,7 @@ const getOrderByTrackingId = async (data: { tid: string }) => {
 
 const getLatestOrderByCustomerEmail = async (
   data: { email: string },
-  storeId: string,
+  storeId: string
 ) => {
   try {
     const token = getToken();
@@ -106,10 +120,7 @@ const getLatestOrderByCustomerEmail = async (
   }
 };
 
-const getOrdersByStatus = async (
-  data: { status: string },
-  storeId: string,
-) => {
+const getOrdersByStatus = async (data: { status: string }, storeId: string) => {
   try {
     const token = getToken();
     const response = await fetch(`${url}/api/orders/status/${storeId}`, {
