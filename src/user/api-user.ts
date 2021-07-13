@@ -25,13 +25,13 @@ const url = process.env.REACT_APP_BACKEND_URL as string;
 
 const createMerchant = async (user: IMerchant) => {
   try {
-    const token = getToken();
+    // const token = getToken();
     const response = await fetch(`${url}/api/users`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: token,
+        // Authorization: token,
       },
       body: JSON.stringify(user),
     });

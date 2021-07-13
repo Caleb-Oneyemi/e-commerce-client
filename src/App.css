@@ -46,10 +46,20 @@
 	/* background-color: rgb(237, 72, 81); */
 }
 
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pad-btn {
+	margin-bottom: 0.5em;
+	margin-left: 1em;
+	margin-right: 1em;
+}
 
 button {
 	max-width: 92.5%;
-	background: red;
+	background: linear-gradient(to right, #f00000, #dc2818);
 	color: white;
 	border: 0;
 	font-size: 1rem;

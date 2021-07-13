@@ -9,11 +9,44 @@ import {
   storeProductImageUrl,
 } from '../product/api-product';
 import { uploadImage } from '../utils/uploadImage';
+import productImg from '../assets/prod.jpeg';
 
 const ProductListStyle = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
+  justify-items: center;
+
+  .products {
+    margin: 1rem 0;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+    width: 75%;
+  }
+
+  .img-product {
+    height: 12.5em;
+  }
+
+  .img-product img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .details {
+    padding: 1rem;
+  }
+
+  .btn {
+    margin: 0.5rem;
+  }
+  .error {
+    padding: 1rem;
+    color: red;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export default function Products({ storeId }: { storeId: string }) {
@@ -86,36 +119,44 @@ export default function Products({ storeId }: { storeId: string }) {
     <div>
       <ProductListStyle>
         {products?.map((product: IProduct) => (
-          <div key={product._id}>
-            <img src={product?.image} alt="" height="100px" width="150px" />
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>
-              {product.quantity} {product.quantity > 1 ? 'units' : 'unit'} left
-            </p>
-            <p>{product.price} Naira per unit</p>
-
-            <div>
-              <h3>Upload Store Image</h3>
-              <form>
-                <div>
-                  <input type="file" name="file" onChange={handleChange} />
-                  <button
-                    onClick={(e) => handleUpload(e, product?._id as string)}
-                  >
-                    Upload
-                  </button>
-                </div>
-              </form>
+          <div className='products' key={product._id}>
+            <div className="img-product">
+              {product?.image ? 
+                <img src={product?.image} alt="" height="100px" width="150px" /> 
+                : <img src={productImg} height="100px" width="150px" />
+              }
             </div>
 
             <div>
+              <label htmlFor="fileInput" className="form-label">
+                <i className="icon fa fa-plus" style={{marginLeft: '1em'}}></i>
+              </label>
+              <input type="file" name="file" onChange={handleChange} id='fileInput' style={{display: 'none'}} />
               <button
+                onClick={(e) => handleUpload(e, product?._id as string)}
+              >
+                Upload
+              </button>
+            </div>
+            
+            <div className='details'>
+              <h2>{product.name}</h2>
+              <p>{product.description}</p>
+              <p>
+                {product.quantity} {product.quantity > 1 ? 'units' : 'unit'} left
+              </p>
+              <p>{product.price} Naira per unit</p>
+            </div>
+
+            <div className='flex'>
+              <button
+                className='pad-btn'
                 onClick={() => history.push(`/products/edit/${product._id}`)}
               >
                 Edit
               </button>
               <button
+                className='pad-btn'
                 onClick={() =>
                   handleProductDelete(product._id as string, product.name)
                 }
@@ -123,7 +164,8 @@ export default function Products({ storeId }: { storeId: string }) {
                 Delete
               </button>
             </div>
-            <hr />
+
+            
           </div>
         ))}
       </ProductListStyle>

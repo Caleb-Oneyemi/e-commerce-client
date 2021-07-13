@@ -5,6 +5,7 @@ import Header from '../Header';
 import { uploadImage } from '../utils/uploadImage';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
+import usrImg from '../assets/user.jpeg';
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -53,27 +54,9 @@ export default function Profile() {
     <>
       <Header />
       <ProfileWrapper>
-        {/* <form> */}
-        {/* <div>
-						<label htmlFor="fileInput" className="form-label">
-							<i className="icon fa fa-plus"></i>
-							<button onClick={handleUpload} className="uploades">
-								Upload Picture
-							</button>
-						</label>
-						<input
-							type="file"
-							name="file"
-							id="fileInput"
-							style={{ display: 'none' }}
-							onChange={handleChange}
-						/>
-					</div> */}
-        {/* </form> */}
-
         <div className="profile-details">
           <div className="profile-image">
-            <img src={user?.image} alt="" />
+            {user?.image ? <img src={user?.image} alt="" /> : <img src={usrImg} alt="" />}
           </div>
 
           <div className="forms">
@@ -156,7 +139,6 @@ padding: 4rem;
 }
 
 .profile-image img{
-  border-radius: 50%;
   width: 100%;
   height: 100%;
 }

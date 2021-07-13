@@ -6,6 +6,7 @@ import { setCookie } from '../utils/setCookie';
 import Swal from 'sweetalert2';
 import img1 from '../assets/img2.jpg';
 import img3 from '../assets/imag3.jpg';
+
 export default function Signin() {
 	const [values, setValues] = useState({
 		email: '',

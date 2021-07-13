@@ -7,8 +7,6 @@ const Logo = styled.h1`
 	margin-left: 1.5rem;
 	position: relative;
 	z-index: 2;
-	background-color: red;
-	background-image: linear-gradient(to right, #d38312,#a83279);
 	a {
 		color: white;
 		text-decoration: none;
@@ -17,11 +15,9 @@ const Logo = styled.h1`
 `;
 
 const HeaderStyles = styled.header`
-	
-
 	#drain {
 		background-color: red !important;
-		background-image: linear-gradient(to right, #d38312, #a83279);
+		background-image: linear-gradient(to right, #f00000, #dc2818);
 	}
 	.bar {
 		border-bottom: 10px solid red;

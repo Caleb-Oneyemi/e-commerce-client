@@ -4,23 +4,22 @@ import { getStores, IStore } from './api-store';
 import { useHistory } from 'react-router-dom';
 import Header from '../Header';
 import Swal from 'sweetalert2';
+import storeImg from '../assets/store.jpeg';
 
 const StoreListStyle = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  grid-gap: 60px;
 
   .stores12 {
     margin: 1rem 0;
-    box-shadow: 1px 1px 2px 1px;
-    width: 50%;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+    width: 75%;
     /* border: 1px solid black; */
   }
 
   .img-store {
-    /* width: ;
-    height: ; */
+    height: 12.5em;
   }
 
   .img-store img {
@@ -78,16 +77,10 @@ export default function Stores() {
     <>
       <Header />
       <StoresWrapper>
-        <h1 className="stores-title">Stores Page</h1>
         <div id="btn-stores">
+        <i className="icon fa fa-plus" onClick={() => history.push('/stores/new')}></i>
           <button onClick={() => history.push('/stores/new')}>
             Create Store
-          </button>
-          <button onClick={() => history.push('/stores/inventory')}>
-            View Inventory
-          </button>
-          <button onClick={() => history.push('/user/profile')}>
-            View Profile
           </button>
         </div>
 
@@ -96,12 +89,9 @@ export default function Stores() {
             {stores?.map((store: IStore) => (
               <div className="stores12" key={store?._id}>
                 <div className="img-store">
-                  {!store.image && (
-                    <p className="error">
-                      **Upload an Image for easier recognition
-                    </p>
-                  )}
-                  <img src={store?.image} alt="" />
+                  {store.image ? (
+                    <img src={store?.image} alt="" width='5em' height='5em'/>
+                  ): <img src={storeImg} alt="" width='5em' height='5em' />}
                 </div>
                 <div className="details">
                   <h2 className="store-name">{store?.name}</h2>
@@ -130,10 +120,23 @@ const StoresWrapper = styled.div`
     text-align: center;
   }
 
+  .icon{
+    width: 32px;
+    height: 32px;
+    border: 1px solid black;
+    border-radius: 20px;
+    //
+    display:inline-block;
+    padding-left: .5rem;
+    line-height: 30px;
+    cursor: pointer;
+  }
+
   #btn-stores {
     /* width: 90%; */
     /* justify-content: center !important; */
     /* margin: 0 auto; */
+    margin-bottom: 3em;
   }
 
   #btn-stores button {
@@ -141,10 +144,11 @@ const StoresWrapper = styled.div`
     margin: 0 1rem;
   }
 
-  .stores1 {
-  }
-
   @media screen and (max-width: 767px) {
+    .icon {
+      display: none;
+    }
+
     #btn-stores button {
       display: block;
       width: 99%;

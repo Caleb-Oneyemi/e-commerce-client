@@ -48,7 +48,7 @@ li a{
     }
     &:after {
       height: 3px;
-      background:blue;
+      background:white;
       content: '';
       width: 0;
       position: absolute;
@@ -61,7 +61,6 @@ li a{
     &:hover,
     &:focus {
       outline: none;
-      /* border-bottom: 1px solid blue; */
       &:after {
         width: calc(100% - 60px);
       }

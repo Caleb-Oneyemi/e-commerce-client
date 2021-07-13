@@ -5,6 +5,7 @@ import { createMerchant } from '../user/api-user';
 import Form from '../styles/Form';
 import img1 from '../assets/img2.jpg';
 import img3 from '../assets/imag3.jpg';
+
 export default function Register() {
 	const history = useHistory();
 	const [values, setValues] = useState({
