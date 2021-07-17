@@ -21,6 +21,8 @@ export interface IChangePass {
   confirmedPassword: string;
 }
 
+
+
 const url = process.env.REACT_APP_BACKEND_URL as string;
 
 const createMerchant = async (user: IMerchant) => {

@@ -16,8 +16,7 @@ const Logo = styled.h1`
 
 const HeaderStyles = styled.header`
 	#drain {
-		background-color: red !important;
-		background-image: linear-gradient(to right, #f00000, #dc2818);
+		background-color: rgba(255, 0, 0, 1) !important;
 	}
 	.bar {
 		border-bottom: 10px solid red;
@@ -32,6 +31,10 @@ const HeaderStyles = styled.header`
 		grid-template-columns: 1fr auto;
 		border-bottom: 1px solid red;
 	}
+
+	a {
+		font-family: fantasy;
+	}
 `;
 
 export default function Header() {
@@ -39,7 +42,7 @@ export default function Header() {
 		<HeaderStyles>
 			<nav id="drain" className="navbar navbar-expand-lg navbar-light bg-white containers">
 				<Logo>
-					<Link to="/">Maestro</Link>
+					<Link to="/">MAESTRO</Link>
 				</Logo>
 				<button
 					className="navbar-toggler"

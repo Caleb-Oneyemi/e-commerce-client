@@ -1,9 +1,17 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './Header';
-import Image1 from './assets/shirts.jpg';
-import Image2 from './assets/img1.jpg';
-import Image3 from './assets/img2.jpg';
+import art1 from './assets/art1.jpg';
+import art2 from './assets/art2.jpg';
+import book1 from './assets/book1.jpg';
+import book2 from './assets/book2.jpg';
+import elec1 from './assets/electronics1.jpg';
+import elec2 from './assets/electronics2.jpg';
+import fashion1 from './assets/fashion1.jpg';
+import fashion2 from './assets/fashion2.jpg';
+import food1 from './assets/food1.jpg';
+import food2 from './assets/food2.jpg';
+
 export default function Store() {
 	const history = useHistory();
 
@@ -14,27 +22,37 @@ export default function Store() {
 
 			<div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
 				<div className="carousel-inner">
-					<div className="carousel-item active slide1">
+					<div className="carousel-item active slide1 center-img">
 						{/* <img className="d-block w-100" src={Image3} alt="First slide" /> */}
 						<div className="carousel-caption leap d-none d-md-block">
-							<h5>Second slide label</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<h1 style={{fontSize: '5em', fontFamily: 'fantasy'}}>Buy Food</h1>
 						</div>
 					</div>
 					<div className="carousel-item slide2">
 						{/* <img className="d-block w-100" src={Image2} alt="Second slide"/> */}
 						<div className="carousel-caption leap d-none d-md-block">
-							<h5>Second slide label</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<h1 style={{fontSize: '5em', fontFamily: 'fantasy'}}>Buy Art</h1>
 						</div>
 					</div>
 					<div className="carousel-item slide3">
 						{/* <img className="d-block w-100" src={Image1} alt="Third slide" /> */}
 						<div className="carousel-caption leap d-none d-md-block">
-							<h5>Second slide label</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<h1 style={{fontSize: '5em', fontFamily: 'fantasy'}}>Buy Fashion</h1>
 						</div>
 					</div>
+					<div className="carousel-item slide4">
+						{/* <img className="d-block w-100" src={Image1} alt="Third slide" /> */}
+						<div className="carousel-caption leap d-none d-md-block">
+							<h1 style={{fontSize: '5em', fontFamily: 'fantasy'}}>Buy Books</h1>
+						</div>
+					</div>
+					<div className="carousel-item slide5">
+						{/* <img className="d-block w-100" src={Image1} alt="Third slide" /> */}
+						<div className="carousel-caption leap d-none d-md-block">
+							<h1 style={{fontSize: '5em', fontFamily: 'fantasy'}}>Buy Electronics</h1>
+						</div>
+					</div>
+					
 				</div>
 				<a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 					<span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,24 +68,30 @@ export default function Store() {
 }
 
 const HomeWrapper = styled.div`
-	.slide1,
-	.slide2,
-	.slide3 {
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-	}
 	.slide1 {
-		background-image: url('./assets/shirts.jpg');
-		height: 89vh;
+		background: url(${food1}) no-repeat center center fixed;
+		background-size: 100% 100%;
+		height: 90vh;
 	}
 	.slide2 {
-		background-image: url('./assets/shirts.jpg');
-		height: 89vh;
+		background: url(${art2}) no-repeat center center fixed;
+		background-size: 100% 100%;
+		height: 90vh;
 	}
 	.slide3 {
-		background-image: url('./assets/shirts.jpg');
-		height: 89vh;
+		background: url(${fashion2}) no-repeat center center fixed;
+		background-size: 100% 100%;
+		height: 90vh;
+	}
+	.slide4 {
+		background: url(${book1}) no-repeat center center fixed;
+		background-size: 100% 100%;
+		height: 90vh;
+	}
+	.slide5 {
+		background: url(${elec2}) no-repeat center center fixed;
+		background-size: 100% 100%;
+		height: 90vh;
 	}
 
 	.carousel-caption {
@@ -77,8 +101,33 @@ const HomeWrapper = styled.div`
 		transform: translate(-50%, -50%);
 	}
 
+	.carousel  {
+		margin-top: 0.1em;
+	}
+
 	.tenor img {
 		width: 100% !important;
 		height: 100% !important;
+	}
+
+	@media screen and (max-width: 1350px) {
+		.slide1,
+		.slide2,
+		.slide3,
+		.slide4,
+		.slide5 {
+			height: 87vh;
+		}
+	}
+
+	@media screen and (max-width: 993px) {
+		.slide1,
+		.slide2,
+		.slide3,
+		.slide4,
+		.slide5 {
+			height: 92vh;
+		}
+		
 	}
 `;

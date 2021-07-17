@@ -15,6 +15,7 @@ export default function EditProduct() {
     description: '',
     quantity: '',
     price: '',
+    limit: ''
   });
 
   const [product, setProduct] = useState({
@@ -22,6 +23,7 @@ export default function EditProduct() {
     description: '',
     quantity: '',
     price: '',
+    limit: ''
   });
 
   const handleChange = async (e: any) => {
@@ -36,12 +38,14 @@ export default function EditProduct() {
       description: values.description,
       quantity: values.quantity,
       price: values.price,
+      limit: values.limit
     };
 
     if (!data.name) delete data.name;
     if (!data.description) delete data.description;
     if (!parseInt(data.quantity as string)) delete data.quantity;
     if (!parseInt(data.price as string)) delete data.price;
+    if (!parseInt(data.limit as string)) delete data.limit;
 
     const response = await updateProduct(id, data);
 
@@ -132,6 +136,18 @@ export default function EditProduct() {
               type="number"
               value={values.price}
               placeholder={product.price}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="limit">Limit</label>
+            <input
+              name="limit"
+              id="limit"
+              type="number"
+              value={values.limit}
+              placeholder='Emails will be sent once product quantity is below limit'
               onChange={handleChange}
             />
           </div>

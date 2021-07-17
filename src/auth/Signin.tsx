@@ -4,8 +4,8 @@ import Form from '../styles/Form';
 import { signIn } from './api-auth';
 import { setCookie } from '../utils/setCookie';
 import Swal from 'sweetalert2';
-import img1 from '../assets/img2.jpg';
-import img3 from '../assets/imag3.jpg';
+import art1 from '../assets/art1.jpg';
+import elec1 from '../assets/electronics1.jpg'
 
 export default function Signin() {
 	const [values, setValues] = useState({
@@ -74,8 +74,8 @@ export default function Signin() {
 					<button onClick={handleSubmit}>SignIn</button>
 				</Form>
 				<div className="market">
-					<img src={img3} alt="market" />
-					<img className="top" src={img1} alt="market" />
+					<img src={elec1} alt="market" />
+					<img className="top" src={art1} alt="market" />
 				</div>
 			</div>
 		

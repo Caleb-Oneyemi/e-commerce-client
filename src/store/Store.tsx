@@ -86,65 +86,61 @@ export default function Store() {
   return (
     <>
       <Header />
-      {store?.name ? (
-        <StoreWrapper>
-          <div>
-            <div className='flex'>
+      <StoreWrapper>
+        <div>
+          <div className='flex'>
+            <div>
+              {store.image ? (
+                  <img className='simg' src={store?.image} alt="" height="80%" width="100%"/>
+                ): <img className='simg' src={storeImg} alt="" height="80%" width="100%" />
+              }
+
+              <div className='flex' id='btn-con'>
+                <button
+                  style={{marginRight: '1em'}}
+                  onClick={() => history.push(`/stores/edit/${id}`)}
+                >
+                  Edit Store
+                </button>
+                <button onClick={handleStoreDelete}>Delete Store</button>
+              </div>
+            </div>
+            <div className='sdetails'>
               <div>
-                {store.image ? (
-                    <img className='simg' src={store?.image} alt="" height="100%" width="100%"/>
-                  ): <img className='simg' src={storeImg} alt="" height="100%" width="100%" />
-                }
-              </div>
-              <div className='sdetails'>
-                <div>
-                  <label htmlFor="fileInput" className="form-label">
-                    <i className="icon fa fa-plus"></i>
-                  </label>
-                  <input type="file" name="file" id='fileInput' onChange={handleChange} style={{display: 'none'}}/>
-                  
-                  <button onClick={handleUpload}>Upload</button>
-                </div>
-  
-                <h1>{store?.name}</h1>
-                <p>{store?.category}</p>
-                <p>{store?.bio}</p>
-              </div>
-            </div>
-
-            <br />
-
-            <div>
-              <button 
-                style={{marginRight: '1em'}}
-                onClick={() => history.push(`/stores/edit/${id}`)}
-              >
-                Edit Store
-              </button>
-              <button onClick={handleStoreDelete}>Delete Store</button>
-            </div>
-
-            <br />
-            <br />
-            <div>
-              <div className='flex'>
-                <button onClick={() => history.push(`/orders/all/${id}`)}>
-                  View Orders
-                </button>
-                <button onClick={() => history.push(`/products/new/${id}`)}>
-                  Add Product
-                </button>
+                <label htmlFor="fileInput" className="form-label">
+                  <i className="icon fa fa-plus"></i>
+                </label>
+                <input type="file" name="file" id='fileInput' onChange={handleChange} style={{display: 'none'}}/>
+                
+                <button onClick={handleUpload}>Upload</button>
               </div>
 
-              <Products storeId={id} />
+              <h1>{store?.name}</h1>
+              <p>{store?.category}</p>
+              <p>{store?.bio}</p>
             </div>
           </div>
-        </StoreWrapper>
-      ) : (
-        <div>
-          <h2>Sorry, the store you are looking for doesn't exist</h2>
+
+          <br />
+
+          
+
+          <br />
+          <br />
+          <div>
+            <div className='flex'>
+              <button onClick={() => history.push(`/orders/all/${id}`)}>
+                View Orders
+              </button>
+              <button onClick={() => history.push(`/products/new/${id}`)}>
+                Add Product
+              </button>
+            </div>
+
+            <Products storeId={id} />
+          </div>
         </div>
-      )}
+      </StoreWrapper>
     </>
   );
 };
@@ -195,6 +191,14 @@ const StoreWrapper = styled.div`
 
     .sdetails p {
       font-size: 1em;
+    }
+
+    #btn-con {
+      justify-content: flex-start;
+    }
+
+    button {
+      padding: 0.75em 0.5em
     }
 
     #btn-stores button {

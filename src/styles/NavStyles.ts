@@ -6,6 +6,7 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 2rem;
+  font-family: fantasy;
 
 li{
   margin-left: 4rem;
@@ -23,7 +24,6 @@ li a{
     display: flex;
     align-items: center;
     position: relative;
-    text-transform: uppercase;
     font-weight: 900;
     font-size: 1em;
     background: none;

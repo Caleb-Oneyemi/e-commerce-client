@@ -11,7 +11,6 @@ import CreateStore from './store/CreateStore';
 import Stores from './store/Stores';
 import Store from './store/Store';
 import EditStore from './store/EditStore';
-import Inventory from './store/Inventory';
 import CreateProduct from './product/CreateProduct';
 import Product from './product/Product';
 import EditProduct from './product/EditProduct';
@@ -61,11 +60,9 @@ function App() {
         <Route path="/stores/all" component={Stores} />
         <Route path="/store/:storeId" component={Store} />
         <Route path="/stores/edit/:storeId" component={EditStore} />
-        <Route path="/stores/inventory" component={Inventory} />
         <Route path="/products/new/:storeId" component={CreateProduct} />
         <Route path="/products/edit/:productId" component={EditProduct} />
-
-        <Route path="/orders/new" component={CreateStore} />
+        
         <Route path="/orders/all/:storeId" component={Orders} />
         <Route path="/order/:orderId" component={Order} />
 

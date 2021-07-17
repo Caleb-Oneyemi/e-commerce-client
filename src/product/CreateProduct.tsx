@@ -14,6 +14,7 @@ export default function CreateProduct() {
     description: '',
     quantity: 0,
     price: 0,
+    limit: ''
   });
 
   const handleChange = async (e: any) => {
@@ -28,6 +29,7 @@ export default function CreateProduct() {
       description: values.description,
       quantity: values.quantity,
       price: values.price,
+      limit: values.limit
     };
 
     if (data.quantity <= 0) {
@@ -42,6 +44,14 @@ export default function CreateProduct() {
       Swal.fire({
         icon: 'error',
         text: 'Price must be greater than 0',
+      });
+      return;
+    }
+
+    if (parseInt(data.limit) <= 0) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Limit must be greater than 0',
       });
       return;
     }
@@ -107,6 +117,19 @@ export default function CreateProduct() {
               type="number"
               value={values.price}
               placeholder="Product Price"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="limit">Limit</label>
+            <input
+              name="limit"
+              id="limit"
+              type="number"
+              value={values.limit}
+              placeholder="Emails will be sent once product quantity is below limit"
               onChange={handleChange}
               required
             />

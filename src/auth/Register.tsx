@@ -3,8 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { createMerchant } from '../user/api-user';
 import Form from '../styles/Form';
-import img1 from '../assets/img2.jpg';
-import img3 from '../assets/imag3.jpg';
+import fashion1 from '../assets/fashion1.jpg';
+import food2 from '../assets/food2.jpg';
 
 export default function Register() {
 	const history = useHistory();
@@ -93,7 +93,7 @@ export default function Register() {
 						name="phoneNumber"
 						id="phoneNumber"
 						value={values.phoneNumber}
-						placeholder="Phone Number"
+						placeholder="+234 *** *** ****"
 						onChange={handleChange}
 						type="text"
 						required
@@ -121,8 +121,8 @@ export default function Register() {
 			</Form>
 
 			<div className="market">
-				<img src={img3} alt="market" />
-				<img className="top" src={img1} alt="market" />
+				<img src={food2} alt="market" />
+				<img className="top" src={fashion1} alt="market" />
 			</div>
 		</div>
 	);

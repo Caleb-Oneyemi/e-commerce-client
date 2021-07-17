@@ -14,6 +14,7 @@ export interface IProductData {
   description?: string;
   quantity?: number | string;
   price?: number | string;
+  limit?: number | string;
 }
 
 const url = process.env.REACT_APP_BACKEND_URL as string;

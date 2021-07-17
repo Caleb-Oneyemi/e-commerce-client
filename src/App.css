@@ -37,6 +37,12 @@
   }
 } */
 
+.center-img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .auth-form {
 	position: fixed;
 	top: 50%;
@@ -46,9 +52,25 @@
 	/* background-color: rgb(237, 72, 81); */
 }
 
+.f-input {
+	width: 100%;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	font-size: 1rem;
+	border: 2px solid rgb(228, 233, 245);
+	border-radius: 6px;
+}
+
 .flex {
 	display: flex;
 	justify-content: space-between;
+}
+
+.f-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
 }
 
 .pad-btn {
@@ -75,9 +97,11 @@ a {
 	text-decoration: none;
 	color: black;
 }
+
 .market {
 	width: 40%;
 }
+
 .market img {
 	position: fixed;
 	/* left:0; */

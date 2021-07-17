@@ -6,6 +6,7 @@ import {
   IProduct,
 } from '../product/api-product';
 import Header from '../Header';
+import Swal from 'sweetalert2';
 
 export default function CustomerStore() {
   const [store, setStore] = useState({
@@ -24,7 +25,15 @@ export default function CustomerStore() {
 
     getStoreById(id, signal)
       .then((data) => {
-        setStore(data);
+        console.log(data)
+        if (data.error) {
+          Swal.fire('Error', data.error);
+          // setTimeout(() => {
+          //   history.push('/signin');
+          // }, 3000);
+        } else {
+          setStore(data);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -56,13 +65,13 @@ export default function CustomerStore() {
       <hr />
 
       <div>
-        {products.map((product: IProduct) => (
-          <div key={product._id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>{product.price} Naira</p>
+        {products?.map((product: IProduct) => (
+          <div key={product?._id}>
+            <h2>{product?.name}</h2>
+            <p>{product?.description}</p>
+            <p>{product?.price} Naira</p>
             <div>
-              <button onClick={() => history.push(`/product/${product._id}`)}>
+              <button onClick={() => history.push(`/product/${product?._id}`)}>
                 View Product
               </button>
             </div>

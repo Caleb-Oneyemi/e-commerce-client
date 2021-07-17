@@ -27,13 +27,12 @@ export default function TrackOrder() {
 	};
 
 	return (
-		<div>
+		<div style={{position: 'static'}}>
 			<Header />
 			<TrackOrderWrapper>
 				<div className="leap">
 					<div className="title-forms">
-						<h1>Track Order Page</h1>
-						<h3>Have an existing order?</h3>
+						<h1>Have an existing order?</h1>
 					</div>
 
 					<form>
@@ -41,6 +40,7 @@ export default function TrackOrder() {
 							<input
 								name="tid"
 								id="tid"
+								className='f-input'
 								value={tid}
 								placeholder="Enter your Tracking ID"
 								onChange={handleChange}
@@ -67,6 +67,7 @@ export default function TrackOrder() {
 const TrackOrderWrapper = styled.div`
 	background-color: #fff !important;
 	height: 91vh;
+	
 
   .leap{
     position: absolute;

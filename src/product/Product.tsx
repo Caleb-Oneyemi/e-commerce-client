@@ -3,8 +3,8 @@ import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 import { getProductById } from '../product/api-product';
-import img from '../sunset.jpeg';
 import Header from '../Header';
+import productImg from '../assets/prod.jpeg';
 
 const ProductStyle = styled.div`
   display: grid;
@@ -12,7 +12,7 @@ const ProductStyle = styled.div`
   grid-auto-flow: column;
   max-width: var(--maxWidth);
   justify-content: center;
-  align-items: top;
+  align-items: center;
   gap: 2rem;
   img {
     width: 100%;
@@ -86,26 +86,20 @@ export default function Product() {
   return (
     <>
       <Header />
-      <div>
-        <h1>Product Page</h1>
-        <button onClick={() => history.push('/cart')}>View Cart 🛒</button>
-      </div>
-
-      <hr />
       <br />
 
       <ProductStyle>
-        <img src={img} alt="" />
+        <img src={productImg} alt="" />
 
         <div className="details">
-          <p>{product?.name}</p>
+          <h2>{product?.name}</h2>
           <p>{product?.description}</p>
           <p>
             {product?.price} {product?.price ? 'Naira' : ''}
           </p>
 
           <div>
-            <input type="number" value={quantity} onChange={handleChange} />
+            <input className='f-input' type="number" value={quantity} onChange={handleChange} />
             <button onClick={handleAddToCart}>Add to Cart 🛒</button>
           </div>
         </div>
