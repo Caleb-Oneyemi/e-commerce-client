@@ -36,7 +36,7 @@ const createOrder = async (order: IOrder, storeId: string) => {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(order),
     });

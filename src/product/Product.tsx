@@ -27,10 +27,10 @@ export default function Product() {
     description: '',
     price: 0,
     store: '',
+    image: '',
     merchant: { email: '' },
   });
 
-  const history = useHistory();
   const location = useLocation();
   const id = location.pathname.split('/product/')[1];
 
@@ -49,6 +49,7 @@ export default function Product() {
       name: product.name,
       price: product.price,
       store: product.store,
+      image: product.image,
       merchant: product.merchant.email,
       quantity,
     };
@@ -89,7 +90,7 @@ export default function Product() {
       <br />
 
       <ProductStyle>
-        <img src={productImg} alt="" />
+        <img src={product.image ? product.image : productImg} alt="" />
 
         <div className="details">
           <h2>{product?.name}</h2>

@@ -10,7 +10,7 @@ export default function CreateStore() {
   const [values, setValues] = useState({
     name: '',
     bio: '',
-    cat: '',
+    cat: 'Fashion and Accessories',
   });
 
   const handleChange = async (e: any) => {

@@ -59,13 +59,9 @@ const getStoreById = async (
   signal: AbortSignal | null | undefined
 ) => {
   try {
-    const token = getToken();
     const response = await fetch(`${url}/api/stores/${storeId}`, {
       method: 'GET',
       signal: signal,
-      headers: {
-        Authorization: token,
-      },
     });
 
     return response.json();

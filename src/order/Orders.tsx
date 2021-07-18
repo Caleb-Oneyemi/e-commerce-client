@@ -13,11 +13,6 @@ import { formatDate } from '../utils/formatDate';
 import Form from '../styles/Form';
 import { totalCost } from '../utils/calculateTotal';
 
-const OrderListStyle = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-`;
 
 export default function Orders() {
   const history = useHistory();
@@ -81,19 +76,10 @@ export default function Orders() {
   }, [id]);
 
   return (
-    <div>
+    <>
       <Header />
-
-      <br />
-      <div
-        style={{ color: 'red', cursor: 'pointer' }}
-        onClick={() => history.goBack()}
-      >
-        Go to Store
-      </div>
-
-      <div>
-        <Form style={{ margin: '2em 0em' }}>
+      <div className='form'>
+        <Form>
           <div>
             <label htmlFor="cat">View Orders By Status</label>
             <select name="cat" id="cat" onChange={handleChange} required>
@@ -105,17 +91,18 @@ export default function Orders() {
             </select>
           </div>
 
-          <br />
-
           <button onClick={handleUpdate}>View</button>
         </Form>
       </div>
+
+      <br />
+      <br />
 
       <div>
         {!orders[0] ? 'No existing orders' : ''}
         <OrderListStyle>
           {orders.map((order: IOrder) => (
-            <div key={order?._id}>
+            <div className='orders' key={order?._id}>
               <p>{order?.name}</p>
               <p>{order?.email}</p>
               <p>{order?.phoneNumber}</p>
@@ -130,6 +117,24 @@ export default function Orders() {
           ))}
         </OrderListStyle>
       </div>
-    </div>
+    </>
   );
 }
+
+
+const OrderListStyle = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+
+  .orders {
+    margin: 1rem 0;
+    padding: 1em;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+    width: 75%;
+  }
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+`;

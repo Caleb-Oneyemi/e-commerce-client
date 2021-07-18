@@ -102,11 +102,14 @@ const Form = styled.form`
 	}
 
 	@media screen and (max-width: 767px) {
-		max-width: 90%;
+		max-width: 100%;
 
 		p {
 			font-size: .9rem;
 		}
+
+		padding: 1em 0;
+		margin: 0;
 	}
 `;
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { IProduct } from '../product/api-product';
 import Swal from 'sweetalert2';
 import Header from '../Header';
-import img from '../sunset.jpeg';
+import img from '../assets/prod.jpeg';
 import CartStyles from '../styles/CartStyles';
 
 const CartItemStyles = styled.li`
@@ -11,9 +11,6 @@ const CartItemStyles = styled.li`
   border-bottom: 1px solid var(--lightGrey);
   display: grid;
   grid-template-columns: auto 1fr auto;
-  img {
-    margin-right: 1rem;
-  }
   h3,
   p {
     margin: 0;
@@ -35,7 +32,7 @@ export default function Customer() {
         title: 'Are you sure you want to remove from cart?',
         showDenyButton: true,
         showCancelButton: false,
-        confirmButtonText: 'Delete',
+        confirmButtonText: 'Remove',
         denyButtonText: 'Cancel',
       };
 
@@ -65,7 +62,9 @@ export default function Customer() {
             <ul>
               {cart.map((item: IProduct, i: number) => (
                 <CartItemStyles>
-                  <img src={img} height="75%" width="60%" alt="" />
+                  <div style={{ height: '7.5em', width: '12.5em', marginRight: '1em' }}>
+                    <img src={item.image ? item.image : img} height="100%" width="100%" alt="" />
+                  </div>
                   <div>
                     <div style={{ paddingBottom: '0.5em' }}>
                       <p style={{ paddingBottom: '0.5em' }}>{item.name}</p>
@@ -86,7 +85,7 @@ export default function Customer() {
               <div style={{ paddingBottom: '2em' }}>
                 Your total bill is {totalCost} Naira
               </div>
-              <button onClick={() => history.push('/order/create')}>Buy</button>
+              <button onClick={() => history.push('/order')}>Buy</button>
             </div>
           </CartStyles>
           {/* <br /> */}

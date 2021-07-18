@@ -4,10 +4,15 @@ import { createOrder } from '../order/api-order';
 import Swal from 'sweetalert2';
 import Form from '../styles/Form';
 import Header from '../Header';
+import BuyHook from './PaymentHook';
 
 export default function Customer() {
   const history = useHistory();
   const cart = JSON.parse(localStorage.getItem('maestroCart') as string);
+  const totalCost = cart?.reduce(
+    (sum: number, item: any) => sum + item.price * item.quantity,
+    0
+  );
 
   const [order, setOrder] = useState({
     orderItems: [{}],
@@ -39,6 +44,7 @@ export default function Customer() {
       phoneNumber: order.phoneNumber,
       address: order.address,
       merchantEmail: cart[0].merchant,
+      orderTotal: totalCost
     };
 
     const response = await createOrder(data, store);
@@ -56,7 +62,7 @@ export default function Customer() {
   return (
     <div>
       <Header />
-      {!cart || cart?.length === 0 ? <h2>Your Cart 🛒 is empty</h2> : null}
+      {!cart || cart?.length === 0 ? <h2 style={{padding: '1em'}}>Your Cart 🛒 is empty</h2> :
 
       <div className="form">
         <Form>
@@ -89,7 +95,7 @@ export default function Customer() {
               name="phoneNumber"
               id="phoneNumber"
               value={order.phoneNumber}
-              placeholder="+234 Phone Number"
+              placeholder="+234 *** *** ****"
               onChange={handleChange}
               required
             />
@@ -107,9 +113,20 @@ export default function Customer() {
             />
           </div>
 
-          <button onClick={handleCheckout}>Checkout</button>
+          {/* <button onClick={handleCheckout}>Checkout</button> */}
+          {/* <Buy 
+            
+          /> */}
+
+          <BuyHook 
+            name={order.name} 
+            email={order.email} 
+            phonenumber={order.phoneNumber} 
+            amount={totalCost} 
+          />
+          
         </Form>
-      </div>
+      </div> }
     </div>
   );
 }

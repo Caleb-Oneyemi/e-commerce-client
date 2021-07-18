@@ -1,16 +1,11 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './Header';
-import art1 from './assets/art1.jpg';
 import art2 from './assets/art2.jpg';
 import book1 from './assets/book1.jpg';
-import book2 from './assets/book2.jpg';
-import elec1 from './assets/electronics1.jpg';
 import elec2 from './assets/electronics2.jpg';
-import fashion1 from './assets/fashion1.jpg';
 import fashion2 from './assets/fashion2.jpg';
 import food1 from './assets/food1.jpg';
-import food2 from './assets/food2.jpg';
 
 export default function Store() {
 	const history = useHistory();
@@ -128,6 +123,7 @@ const HomeWrapper = styled.div`
 		.slide5 {
 			height: 92vh;
 		}
+		
 		
 	}
 `;

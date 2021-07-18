@@ -10,6 +10,7 @@ import {
 } from '../product/api-product';
 import { uploadImage } from '../utils/uploadImage';
 import productImg from '../assets/prod.jpeg';
+import { auth } from '../utils/isAuthenticated';
 
 const ProductListStyle = styled.div`
   display: grid;
@@ -52,6 +53,7 @@ const ProductListStyle = styled.div`
 export default function Products({ storeId }: { storeId: string }) {
   const history = useHistory();
   const [products, setProducts] = useState([]);
+  const isAuthenticated = auth();
 
   const handleProductDelete = async (productId: string, name: string) => {
     try {
@@ -127,11 +129,11 @@ export default function Products({ storeId }: { storeId: string }) {
               }
             </div>
 
-            <div>
+            <div style={{paddingTop: '1em'}}>
               <label htmlFor="fileInput" className="form-label">
-                <i className="icon fa fa-plus" style={{marginLeft: '1em'}}></i>
+                <i className="icon fa fa-plus"></i>
               </label>
-              <input type="file" name="file" onChange={handleChange} id='fileInput' style={{display: 'none'}} />
+              <input type="file" name="file" id='fileInput' onChange={handleChange} style={{display: 'none'}}/>
               <button
                 onClick={(e) => handleUpload(e, product?._id as string)}
               >
@@ -149,20 +151,31 @@ export default function Products({ storeId }: { storeId: string }) {
             </div>
 
             <div className='flex'>
-              <button
-                className='pad-btn'
-                onClick={() => history.push(`/products/edit/${product._id}`)}
-              >
-                Edit
-              </button>
-              <button
-                className='pad-btn'
-                onClick={() =>
-                  handleProductDelete(product._id as string, product.name)
-                }
-              >
-                Delete
-              </button>
+              {
+                isAuthenticated ? 
+                  <>
+                    <button
+                      className='pad-btn'
+                      onClick={() => history.push(`/products/edit/${product._id}`)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className='pad-btn'
+                      onClick={() =>
+                        handleProductDelete(product._id as string, product.name)
+                      }
+                    >
+                      Delete
+                    </button>
+                  </>
+                : <button
+                    className='pad-btn'
+                    onClick={() => history.push(`/product/${product._id}`)}
+                  >
+                    View
+                  </button>
+              }
             </div>
 
             

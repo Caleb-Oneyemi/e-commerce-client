@@ -47,9 +47,6 @@ const getProductsByStoreId = async (
     const response = await fetch(`${url}/api/products/store/${storeId}`, {
       method: 'GET',
       signal: signal,
-      headers: {
-        Authorization: token,
-      },
     });
 
     return response.json();
@@ -125,6 +122,8 @@ const storeProductImageUrl = async (data: any, productId: string) => {
       },
       body: JSON.stringify(data),
     });
+
+    console.log('res', response)
 
     return response.json();
   } catch (err) {
