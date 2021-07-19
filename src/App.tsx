@@ -31,11 +31,11 @@ function App() {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/signin" component={Signin} />
-        <Route path="/register" component={Register} />
-        <Route path="/cart" component={Cart} />
+        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/cart" component={Cart} />
         <Route exact path="/order" component={Customer} />
-        <Route path="/tid" component={TrackOrder} />
+        <Route exact path="/tid" component={TrackOrder} />
         <Route path="/store/:storeId" component={CustomerStore} />
         <Route path="/product/:productId" component={Product} />
         <Route path="/404" component={NotFound} />
@@ -49,15 +49,15 @@ function App() {
     <div>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/signin" component={Signin} />
-        <Route path="/register" component={Register} />
-        <Route path="/user/profile" component={Profile} />
-        <Route path="/user/edit" component={EditProfile} />
-        <Route path="/user/editpass" component={ChangePassword} />
+        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/user/profile" component={Profile} />
+        <Route exact path="/user/edit" component={EditProfile} />
+        <Route exact path="/user/editpass" component={ChangePassword} />
         <Route path="/confirm/:id" component={ConfirmUser} />
 
-        <Route path="/stores/new" component={CreateStore} />
-        <Route path="/stores/all" component={Stores} />
+        <Route exact path="/stores/new" component={CreateStore} />
+        <Route exact path="/stores/all" component={Stores} />
         <Route path="/store/:storeId" component={Store} />
         <Route path="/stores/edit/:storeId" component={EditStore} />
         <Route path="/products/new/:storeId" component={CreateProduct} />
@@ -66,9 +66,9 @@ function App() {
         <Route path="/orders/all/:storeId" component={Orders} />
         <Route path="/order/:orderId" component={Order} />
 
-        <Route path="/cart" component={Cart} />
-        <Route path="/order" component={Customer} />
-        <Route path="/tid" component={TrackOrder} />
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/order" component={Customer} />
+        <Route exact path="/tid" component={TrackOrder} />
         <Route path="/store/:storeId" component={CustomerStore} />
         <Route path="/product/:productId" component={Product} />
 
@@ -78,5 +78,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

@@ -30,7 +30,6 @@ export default function Customer() {
   };
 
   const handleCheckout = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
     const store = cart[0].store;
 
     const orders = cart.map((item: any) => {
@@ -113,16 +112,12 @@ export default function Customer() {
             />
           </div>
 
-          {/* <button onClick={handleCheckout}>Checkout</button> */}
-          {/* <Buy 
-            
-          /> */}
-
           <BuyHook 
             name={order.name} 
             email={order.email} 
             phonenumber={order.phoneNumber} 
             amount={totalCost} 
+            handleCheckout={handleCheckout}
           />
           
         </Form>

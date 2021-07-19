@@ -7,6 +7,7 @@ import { getStoreById, removeStore, storeStoreImageUrl } from './api-store';
 import Header from '../Header';
 import { uploadImage } from '../utils/uploadImage';
 import storeImg from '../assets/store.jpeg';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function Store() {
   const [store, setStore] = useState({
@@ -15,9 +16,11 @@ export default function Store() {
     category: '',
     image: '',
   });
+
   const history = useHistory();
   const location = useLocation();
   const id = location.pathname.split('/store/')[1];
+  const storeUrl = `${process.env.REACT_APP_FRONTEND_URL}/store/${id}`;
 
   const handleStoreDelete = async (e: React.MouseEvent<HTMLButtonElement>) => {
     try {
@@ -34,8 +37,14 @@ export default function Store() {
 
       Swal.fire(options).then(async (result) => {
         if (result.isConfirmed) {
-          await removeStore(id);
-          Swal.fire('Store Deleted Successfully', '', 'success');
+          let res = await removeStore(id);
+
+          if (res.error) {
+            Swal.fire('Error', res.error);
+          } else {
+            Swal.fire('Store Deleted Successfully', 'success');
+          }
+          
           setTimeout(() => {
             history.push('/stores/all');
           }, 2000);
@@ -117,6 +126,14 @@ export default function Store() {
             <h1>{store?.name}</h1>
             <p>{store?.category}</p>
             <p>{store?.bio}</p>
+
+            <br />
+            <CopyToClipboard 
+              text={storeUrl}
+            >
+              <button>Copy Link</button>
+            </CopyToClipboard>
+            
           </div>
         </div>
 

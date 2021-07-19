@@ -6,9 +6,10 @@ interface IpayProps {
   email: string;
   phonenumber: string;
   amount: number;
+  handleCheckout: any;
 }
 
-export default function App({ name, email, phonenumber, amount }: IpayProps) {
+export default function App({ name, email, phonenumber, amount, handleCheckout }: IpayProps) {
   const config = {
     public_key: process.env.REACT_APP_PAY_KEY as string,
     tx_ref: String(Date.now()),
@@ -31,16 +32,17 @@ export default function App({ name, email, phonenumber, amount }: IpayProps) {
 
   return (
     <button
-        onClick={(e) => {
-            e.preventDefault();
-            handleFlutterPayment({
-                callback: (response) => {
-                console.log(response);
-                    closePaymentModal()
-                },
-                onClose: () => {},
-            });
-        }}
+      onClick={(e) => {
+        e.preventDefault();
+        handleFlutterPayment({
+          callback: (response) => {
+            console.log(response);
+            handleCheckout();
+            closePaymentModal()
+          },
+          onClose: () => {},
+        });
+      }}
     >
     Checkout
     </button>

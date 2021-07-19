@@ -11,6 +11,7 @@ import {
 import { uploadImage } from '../utils/uploadImage';
 import productImg from '../assets/prod.jpeg';
 import { auth } from '../utils/isAuthenticated';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ProductListStyle = styled.div`
   display: grid;
@@ -53,6 +54,7 @@ const ProductListStyle = styled.div`
 export default function Products({ storeId }: { storeId: string }) {
   const history = useHistory();
   const [products, setProducts] = useState([]);
+  const copiedUrl = `${process.env.REACT_APP_FRONTEND_URL}/product/`; 
   const isAuthenticated = auth();
 
   const handleProductDelete = async (productId: string, name: string) => {
@@ -129,17 +131,27 @@ export default function Products({ storeId }: { storeId: string }) {
               }
             </div>
 
-            <div style={{paddingTop: '1em'}}>
-              <label htmlFor="fileInput" className="form-label">
-                <i className="icon fa fa-plus"></i>
-              </label>
-              <input type="file" name="file" id='fileInput' onChange={handleChange} style={{display: 'none'}}/>
-              <button
-                onClick={(e) => handleUpload(e, product?._id as string)}
-              >
-                Upload
-              </button>
-            </div>
+            {isAuthenticated ? 
+              <div className='flex' style={{paddingTop: '1em'}}>
+                <div>
+                  <label htmlFor="productFileInput" className="form-label">
+                    <i className="icon fa fa-plus"></i>
+                  </label>
+                  <input type="file" name="file" id='productFileInput' onChange={handleChange} style={{display: 'none'}}/>
+                  <button
+                    onClick={(e) => handleUpload(e, product?._id as string)}
+                  >
+                    Upload
+                  </button>
+                </div>
+
+                <CopyToClipboard text={copiedUrl + product._id}>
+                  <button style={{ marginRight: '1em' }}>
+                    Copy Link
+                  </button>
+                </CopyToClipboard>
+              </div>
+            : null}
             
             <div className='details'>
               <h2>{product.name}</h2>
