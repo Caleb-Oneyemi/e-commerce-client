@@ -13,11 +13,6 @@ import { formatDate } from '../utils/formatDate';
 import Form from '../styles/Form';
 import { totalCost } from '../utils/calculateTotal';
 
-const OrderStyle = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 60px;
-`;
 
 export default function Order() {
   const history = useHistory();
@@ -131,8 +126,8 @@ export default function Order() {
       <br />
       <br />
 
-      <OrderStyle>
-        <div key={order?._id} style={{paddingLeft: '1em'}}>
+      <OrderListStyle>
+        <div key={order?._id} style={{paddingLeft: '1em'}} className='orders'>
           <p>{order?.name}</p>
           <p>{order?.email}</p>
           <p>{order?.phoneNumber}</p>
@@ -140,13 +135,12 @@ export default function Order() {
           <p>{order?.status}</p>
           <p>{formatDate(order?.createdAt)}</p>
         </div>
-      </OrderStyle>
+      </OrderListStyle>
 
       <br />
       <br />
       <div>
-        <h3 className="red">Order</h3>
-        <p>Total: {totalCost(order?.orderItems)}</p>
+        <h3>Total: {totalCost(order?.orderItems)}</h3>
         <hr />
 
         <OrderListStyle>

@@ -11,7 +11,6 @@ export default function Signin() {
 	const [values, setValues] = useState({
 		email: '',
 		password: '',
-		error: '',
 	});
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,46 +37,46 @@ export default function Signin() {
 
 	return (
 		
-			<div className="auth-form">
-				<Form>
-					<p className="form-title">Account SignIn</p>
-					<div>
-						{/* <label htmlFor="email">Email</label> */}
-						<input
-							name="email"
-							id="email"
-							value={values.email}
-							placeholder="Email"
-							onChange={handleChange}
-							type="text"
-							required
-						/>
-					</div>
-
-					<div>
-						{/* <label htmlFor="password">Password</label> */}
-						<input
-							name="password"
-							id="password"
-							value={values.password}
-							placeholder="Password"
-							onChange={handleChange}
-							type="password"
-							required
-						/>
-					</div>
-
-					<p id="not">
-						Don't have an account? <Link to="/register">Register</Link>
-					</p>
-
-					<button onClick={handleSubmit}>SignIn</button>
-				</Form>
-				<div className="market">
-					<img src={elec1} alt="market" />
-					<img className="top" src={art1} alt="market" />
+		<div className="auth-form">
+			<Form>
+				<p className="form-title">Account SignIn</p>
+				<div>
+					{/* <label htmlFor="email">Email</label> */}
+					<input
+						name="email"
+						id="email"
+						value={values.email}
+						placeholder="Email"
+						onChange={handleChange}
+						type="text"
+						required
+					/>
 				</div>
+
+				<div>
+					{/* <label htmlFor="password">Password</label> */}
+					<input
+						name="password"
+						id="password"
+						value={values.password}
+						placeholder="Password"
+						onChange={handleChange}
+						type="password"
+						required
+					/>
+				</div>
+
+				<p id="not">
+					Don't have an account? <Link to="/register">Register</Link>
+				</p>
+
+				<button onClick={handleSubmit}>SignIn</button>
+			</Form>
+			<div className="market">
+				<img src={elec1} alt="market" />
+				<img className="top" src={art1} alt="market" />
 			</div>
+		</div>
 		
 	);
 }

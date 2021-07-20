@@ -8,6 +8,7 @@ import food2 from '../assets/food2.jpg';
 
 export default function Register() {
 	const history = useHistory();
+
 	const [values, setValues] = useState({
 		firstName: '',
 		lastName: '',

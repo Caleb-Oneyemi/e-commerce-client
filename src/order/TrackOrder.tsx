@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 export default function TrackOrder() {
 	const [tid, setTid] = useState('');
+	const [isOpen, setIsOpen] = useState(false);
 	const [order, setOrder] = useState({
 		orderItems: [{}],
 		store: {},
@@ -24,19 +25,20 @@ export default function TrackOrder() {
 		e.preventDefault();
 		const response = await getOrderByTrackingId({ tid });
 		setOrder(response);
+		setIsOpen(true);
 	};
 
 	return (
-		<div style={{position: 'static'}}>
+		<div>
 			<Header />
-			<TrackOrderWrapper>
+			<div style={{ marginTop: '2em' }}>
 				<div className="leap">
-					<div className="title-forms">
-						<h1>Have an existing order?</h1>
+					<div style={{textAlign: 'center'}}>
+						<h2>Have an existing order?</h2>
 					</div>
 
 					<form>
-						<div>
+						<div style={{ textAlign: 'center' }}>
 							<input
 								name="tid"
 								id="tid"
@@ -45,14 +47,18 @@ export default function TrackOrder() {
 								placeholder="Enter your Tracking ID"
 								onChange={handleChange}
 								required
+								style={{ width: '50%' }}
 							/>
+						
+							<br />
+							<button onClick={handleSubmit}>View Order Details</button>
 						</div>
-						<br />
-						<button onClick={handleSubmit}>View Order Details</button>
 					</form>
 				</div>
-
-				<div>
+			</div>
+			
+			{ isOpen ? <OrderListStyle>
+				<div className='orders'>
 					<p>{order?.name}</p>
 					<p>{order?.email}</p>
 					<p>{order?.phoneNumber}</p>
@@ -60,53 +66,25 @@ export default function TrackOrder() {
 					<p>{order?.status}</p>
 					<p>{order?.createdAt ? String(new Date(order?.createdAt)) : ''}</p>
 				</div>
-			</TrackOrderWrapper>
+			</OrderListStyle> : null}
 		</div>
 	);
 }
-const TrackOrderWrapper = styled.div`
-	background-color: #fff !important;
-	height: 91vh;
-	
 
-  .leap{
-    position: absolute;
-		left: 50%;
-		top: 40%;
-		transform: translate(-50%, -50%);
-  }
+const OrderListStyle = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-top: 2em;
 
-	.title-forms{
+  .orders {
     margin: 1rem 0;
+    padding: 1em;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+    width: 75%;
   }
-	h1,
-	h3 {
-		text-align: center;
-	}
-	h1 {
-		font-size: 2rem;
-	}
-	h3 {
-		font-size: 1.3rem;
-	}
-	form {
-		
-	}
 
-	input {
-		width: 500px;
-		height: 50px;
-
-    &:focus {
-			outline: none;
-			border: 2px solid red;
-			/* border-color: var(--red); */
-		}
-	}
-
-  @media screen and (max-width:767px){
-    input {
-		width: 300px;
-		height: 40px;
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
   }
 `;
