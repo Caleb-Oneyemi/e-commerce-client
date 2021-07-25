@@ -94,7 +94,7 @@ export default function Customer() {
               name="phoneNumber"
               id="phoneNumber"
               value={order.phoneNumber}
-              placeholder="+234 *** *** ****"
+              placeholder="Phone Number"
               onChange={handleChange}
               required
             />

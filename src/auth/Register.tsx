@@ -94,7 +94,7 @@ export default function Register() {
 						name="phoneNumber"
 						id="phoneNumber"
 						value={values.phoneNumber}
-						placeholder="+234 *** *** ****"
+						placeholder="Phone Number"
 						onChange={handleChange}
 						type="text"
 						required
